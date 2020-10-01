@@ -2,7 +2,7 @@
   <v-app id="dashboard">
     <v-app-bar app color="primary" dark>
       <div>
-        <h2 class="pa-4">Contact Manager9</h2>
+        <h2 class="pa-4">Contact Manager</h2>
       </div>
       <v-spacer></v-spacer>
       <h3 color="white" router to="/new" text>
