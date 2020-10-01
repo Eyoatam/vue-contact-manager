@@ -2,7 +2,7 @@
   <v-app id="new-contact ">
     <v-app-bar app color="primary" dark>
       <div>
-        <h2 class="display-1">New</h2>
+        <h2>Contact Manager</h2>
       </div>
     </v-app-bar>
     <v-card>
@@ -90,3 +90,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+h2 {
+  font-family: "Nunito", sans-serif !important;
+  font-size: calc(14px + (20 - 10) * ((100vw - 435px) / (1200 - 200)));
+}
+</style>

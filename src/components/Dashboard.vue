@@ -4,12 +4,20 @@
       <div>
         <h2 class="pa-4">Contact Manager</h2>
       </div>
-
       <v-spacer></v-spacer>
-
+      <h3 color="white" router to="/new" text>
+        <i class="fa fa-user pa-1"></i>
+        <span class="mr-2">{{ currentUser }}</span>
+      </h3>
       <v-btn color="white" router to="/new" text>
         <i class="fa fa-user-plus pa-1"></i>
         <span class="mr-2">Create New Contact</span>
+      </v-btn>
+      <v-btn color="info" @click="logOut">
+        <span class="mr-2">LogOut</span>
+        <v-icon>
+          mdi-open-in-new
+        </v-icon>
       </v-btn>
     </v-app-bar>
     <v-container>
@@ -42,17 +50,32 @@
 
 <script>
 import { db } from "@/main";
+import firebase from "firebase";
 export default {
   name: "dashboard",
   data() {
     return {
-      contacts: []
+      contacts: [],
+      isLogged: false,
+      currentUser: false
     };
   },
   created() {
     this.getContacts();
+    if (firebase.auth().currentUser) {
+      this.isLogged = true;
+      this.currentUser = firebase.auth().currentUser.email;
+    }
   },
   methods: {
+    logOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.push("/login");
+        });
+    },
     getContacts() {
       db.collection("contacts")
         .orderBy("contact_id")
@@ -67,7 +90,6 @@ export default {
               email: doc.data().email
             };
             this.contacts.push(data);
-            console.log(this.contacts);
           });
         });
     }

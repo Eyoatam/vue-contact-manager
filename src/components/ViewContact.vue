@@ -49,7 +49,6 @@
 
 <script>
 import { db } from "@/main";
-import { getContacts } from "./Dashboard";
 export default {
   name: "view-contacts",
   data() {
@@ -79,6 +78,24 @@ export default {
     $route: "fetchData"
   },
   methods: {
+    getContacts() {
+      db.collection("contacts")
+        .orderBy("contact_id")
+        .get()
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            const data = {
+              id: doc.id,
+              contact_id: doc.data().contact_id,
+              name: doc.data().name,
+              job_title: doc.data().job_title,
+              email: doc.data().email
+            };
+            this.contacts.push(data);
+            console.log(this.contacts);
+          });
+        });
+    },
     fetchData() {
       db.collection("contacts")
         .where("contact_id", "==", this.$route.params.contact_id)
@@ -103,10 +120,10 @@ export default {
             snapshot.forEach(doc => {
               doc.ref.delete();
               this.$router.push("/");
-              getContacts();
             });
           });
       }
+      this.getContacts();
     }
   }
 };
