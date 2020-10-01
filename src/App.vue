@@ -20,11 +20,11 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 h2 {
   font-family: "Nunito", sans-serif !important;
-  font-size: calc(14px + (20 - 10) * ((100vw - 435px) / (1200 - 200)));
+  font-size: calc(14px + (20 - 10) * ((100vw - 440px) / (1200 - 200)));
 }
 h3 {
   font-family: "Nunito", sans-serif !important;
-  font-size: calc(10px + (15 - 5) * ((70vw - 435px) / (1200 - 200)));
+  font-size: calc(10px + (15 - 5) * ((70vw - 430px) / (1200 - 200)));
   color: #ffc107;
 }
 </style>
