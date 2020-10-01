@@ -24,7 +24,7 @@
       <v-card class="mx-auto" max-width="800">
         <v-list>
           <v-list-item class="d-flex justify-center">
-            <h2 class="display-1 pa-3">Contact</h2>
+            <h2 class="display-1 pa-3">Contacts</h2>
           </v-list-item>
           <v-divider></v-divider>
           <v-list-item-group>
