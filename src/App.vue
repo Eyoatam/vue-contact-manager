@@ -22,6 +22,7 @@ h2 {
   font-family: "Nunito", sans-serif !important;
   font-size: calc(14px + (20 - 10) * ((100vw - 440px) / (1200 - 200)));
 }
+
 h3 {
   font-family: "Nunito", sans-serif !important;
   font-size: calc(10px + (15 - 5) * ((70vw - 430px) / (1200 - 200)));
