@@ -2,7 +2,7 @@
   <v-app id="dashboard">
     <v-app-bar app color="primary" dark>
       <div>
-        <h2 class="pa-4">Contact Manager</h2>
+        <h2 class="pa-4">Contact Manager9</h2>
       </div>
       <v-spacer></v-spacer>
       <h3 color="white" router to="/new" text>
@@ -101,3 +101,5 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 </style>
+
+
