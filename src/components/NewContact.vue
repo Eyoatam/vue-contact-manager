@@ -41,6 +41,15 @@
                 v-model="job_title"
               ></v-text-field>
             </v-col>
+            <v-col cols="12">
+              <v-text-field
+                label="database Id"
+                type="text"
+                required
+                readonly
+                v-model="database_id"
+              ></v-text-field>
+            </v-col>
           </v-row>
         </v-container>
         <small>*indicates required field</small>
@@ -52,6 +61,9 @@
         </v-btn>
         <v-btn color="primary" @click="submitForm">
           Save
+        </v-btn>
+        <v-btn color="primary" @click="generateId">
+          Auto-Id
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -67,7 +79,8 @@ export default {
       name: null,
       email: null,
       contact_id: null,
-      job_title: null
+      job_title: null,
+      database_id: null
     };
   },
   methods: {
@@ -83,9 +96,33 @@ export default {
           this.$router.push("/");
           console.log(ref);
         })
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            console.log(doc.data().id);
+          });
+        })
         .catch(err => {
           console.error(err);
         });
+    },
+    generateId() {
+      let symbols = "!@#$%^&*";
+      let upperCase = String.fromCharCode(Math.floor(Math.random() * 10 + 48));
+      let lowerCase = String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+      let number = String.fromCharCode(Math.floor(Math.random() * 26 + 97));
+
+      const randomId = symbols
+        .concat(lowerCase)
+        .split("")
+        .reverse()
+        .join("")
+        .concat(number)
+        .split("")
+        .reverse("")
+        .join("")
+        .concat(upperCase);
+      console.log(randomId);
+      this.database_id = randomId;
     }
   }
 };

@@ -37,7 +37,7 @@
               v-for="contact in contacts"
               :key="contact.id"
             >
-              {{ contact.contact_id }}:{{ contact.name }}
+              {{ contact.name }}
               <v-spacer></v-spacer>
               <v-chip class="mr-4">{{ contact.job_title }}</v-chip>
             </v-list-item>
@@ -50,7 +50,8 @@
 
 <script>
 import { db } from "@/main";
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
 export default {
   name: "dashboard",
   data() {
