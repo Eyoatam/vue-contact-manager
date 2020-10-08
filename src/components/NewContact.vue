@@ -62,9 +62,9 @@
         <v-btn color="primary" @click="submitForm">
           Save
         </v-btn>
-        <v-btn color="primary" @click="generateId">
+        <!-- <v-btn color="primary" @click="generateId">
           Auto-Id
-        </v-btn>
+        </v-btn> -->
       </v-card-actions>
     </v-card>
   </v-app>
@@ -104,26 +104,26 @@ export default {
         .catch(err => {
           console.error(err);
         });
-    },
-    generateId() {
-      let symbols = "!@#$%^&*";
-      let upperCase = String.fromCharCode(Math.floor(Math.random() * 10 + 48));
-      let lowerCase = String.fromCharCode(Math.floor(Math.random() * 26 + 65));
-      let number = String.fromCharCode(Math.floor(Math.random() * 26 + 97));
-
-      const randomId = symbols
-        .concat(lowerCase)
-        .split("")
-        .reverse()
-        .join("")
-        .concat(number)
-        .split("")
-        .reverse("")
-        .join("")
-        .concat(upperCase);
-      console.log(randomId);
-      this.database_id = randomId;
     }
+    // generateId() {
+    //   let symbols = "!@#$%^&*";
+    //   let upperCase = String.fromCharCode(Math.floor(Math.random() * 10 + 48));
+    //   let lowerCase = String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+    //   let number = String.fromCharCode(Math.floor(Math.random() * 26 + 97));
+
+    //   const randomId = symbols
+    //     .concat(lowerCase)
+    //     .split("")
+    //     .reverse()
+    //     .join("")
+    //     .concat(number)
+    //     .split("")
+    //     .reverse("")
+    //     .join("")
+    //     .concat(upperCase);
+    //   console.log(randomId);
+    //   this.database_id = randomId;
+    // }
   }
 };
 </script>
