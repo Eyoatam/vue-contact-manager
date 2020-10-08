@@ -76,6 +76,7 @@ export default {
   name: "new-contatcs",
   data() {
     return {
+      snackbar: false,
       name: null,
       email: null,
       contact_id: null,

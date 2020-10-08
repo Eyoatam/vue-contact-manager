@@ -35,6 +35,19 @@
               <v-btn type="submit" color="primary" class="mr-4" @click="logIn"
                 >Login</v-btn
               >
+              <v-snackbar v-model="snackbar">
+                {{ text }}
+                <template v-slot:action="{ attrs }">
+                  <v-btn
+                    color="pink"
+                    text
+                    v-bind="attrs"
+                    @click="snackbar = false"
+                  >
+                    Close
+                  </v-btn>
+                </template>
+              </v-snackbar>
             </div>
           </v-form>
         </v-container>
@@ -49,6 +62,8 @@ export default {
   name: "login",
   data() {
     return {
+      text: "",
+      snackbar: false,
       email: "",
       password: ""
     };
@@ -60,8 +75,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
-          user => {
-            alert(`You Success fully Logged in as ${user.user.email}`);
+          () => {
             this.$router.push("/");
           },
           err => {
@@ -69,6 +83,8 @@ export default {
             console.log(err);
           }
         );
+      this.snackbar = true;
+      this.text = "successfully logged in";
     }
   }
 };

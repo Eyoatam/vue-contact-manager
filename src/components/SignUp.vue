@@ -39,6 +39,19 @@
                 @click.prevent="signIn"
                 >Sign Up</v-btn
               >
+              <v-snackbar v-model="snackbar">
+                {{ text }}
+                <template v-slot:action="{ attrs }">
+                  <v-btn
+                    color="pink"
+                    text
+                    v-bind="attrs"
+                    @click="snackbar = false"
+                  >
+                    Close
+                  </v-btn>
+                </template>
+              </v-snackbar>
             </div>
           </v-form>
         </v-container>
@@ -53,6 +66,8 @@ export default {
   name: "register",
   data() {
     return {
+      text: "",
+      snackbar: false,
       email: "",
       password: ""
     };
@@ -64,8 +79,7 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
-          user => {
-            alert(`Account Created For ${user.user.email}`);
+          () => {
             this.$router.push("/");
           },
           err => {
@@ -73,6 +87,8 @@ export default {
             console.log(err);
           }
         );
+      this.snackbar = true;
+      this.text = "Account Successfully Created";
     }
   }
 };
