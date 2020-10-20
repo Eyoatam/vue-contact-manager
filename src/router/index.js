@@ -15,7 +15,7 @@ let router = new Router({
 	routes: [
 		{
 			path: "/",
-			name: "dahboard",
+			name: "dashboard",
 			component: Dashboard,
 			meta: {
 				requiresAuth: true,
